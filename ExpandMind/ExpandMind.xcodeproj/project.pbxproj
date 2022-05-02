@@ -21,6 +21,8 @@
 		E6A60365281E5F6D002C8D74 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60364281E5F6D002C8D74 /* Models.swift */; };
 		E6A60367281E8104002C8D74 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60366281E8104002C8D74 /* CategoryListView.swift */; };
 		E6A60369281E9662002C8D74 /* WriteModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60368281E9662002C8D74 /* WriteModal.swift */; };
+		E6A6036B281FF0F8002C8D74 /* FirstSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */; };
+		E6A6036D28200AD9002C8D74 /* observableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6036C28200AD9002C8D74 /* observableClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		E6A60364281E5F6D002C8D74 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		E6A60366281E8104002C8D74 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		E6A60368281E9662002C8D74 /* WriteModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModal.swift; sourceTree = "<group>"; };
+		E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSettingView.swift; sourceTree = "<group>"; };
+		E6A6036C28200AD9002C8D74 /* observableClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = observableClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 				E63B3BA9281A3657004DCCBD /* ExpandMindApp.swift */,
 				E63B3BAB281A3657004DCCBD /* ContentView.swift */,
 				E63B3BB9281A37DB004DCCBD /* MainView.swift */,
+				E6A6036C28200AD9002C8D74 /* observableClass.swift */,
 				E63B3BC3281A705A004DCCBD /* YoutubeView.swift */,
 				E63B3BBF281A3E68004DCCBD /* VideoView.swift */,
 				E63B3BC5281A842A004DCCBD /* WriteView.swift */,
@@ -82,6 +87,7 @@
 				E6A60368281E9662002C8D74 /* WriteModal.swift */,
 				E6A60364281E5F6D002C8D74 /* Models.swift */,
 				E63B3BBD281A3827004DCCBD /* SettingView.swift */,
+				E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */,
 				E63B3BC1281A42D5004DCCBD /* ColorExtention.swift */,
 				E63B3BAD281A3658004DCCBD /* Assets.xcassets */,
 				E63B3BAF281A3658004DCCBD /* Preview Content */,
@@ -168,9 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E63B3BC0281A3E68004DCCBD /* VideoView.swift in Sources */,
+				E6A6036D28200AD9002C8D74 /* observableClass.swift in Sources */,
 				E63B3BAC281A3657004DCCBD /* ContentView.swift in Sources */,
 				E6A60367281E8104002C8D74 /* CategoryListView.swift in Sources */,
 				E6A60369281E9662002C8D74 /* WriteModal.swift in Sources */,
+				E6A6036B281FF0F8002C8D74 /* FirstSettingView.swift in Sources */,
 				E63B3BC6281A842A004DCCBD /* WriteView.swift in Sources */,
 				E63B3BBE281A3827004DCCBD /* SettingView.swift in Sources */,
 				E63B3BBA281A37DB004DCCBD /* MainView.swift in Sources */,

@@ -56,9 +56,10 @@ struct VideoView: View {
                     NavigationLink(destination: WriteView(writeStart: self.$writeStart)){
                         Text("다음")
                     }
+                    .disabled(summary == "")
+                    
                     
                 }
-                
             }
             .tint(.customBlack)
             

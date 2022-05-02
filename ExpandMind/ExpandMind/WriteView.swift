@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WriteView: View {
     @Environment(\.dismiss) private var dismiss
+    //@EnvironmentObject var store: Store
+    @AppStorage("count") var count = UserDefaults.standard.integer(forKey: "count")
     @State var opinion: String = ""
     @Binding var writeStart: Bool
     var body: some View {
@@ -43,9 +45,12 @@ struct WriteView: View {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button(action:{
                     self.writeStart = false
+                    count = count + 1
                 }){
                     Text("완료")
-                }            }
+                }.disabled(opinion == "")
+                
+            }
         }
                 .tint(.customBlack)
 
