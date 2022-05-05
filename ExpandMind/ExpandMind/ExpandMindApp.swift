@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct ExpandMindApp: App {
-    var body: some Scene {
+        var body: some Scene {
         WindowGroup {
             ContentView()
+                
         }
     }
 }

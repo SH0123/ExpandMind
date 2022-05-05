@@ -9,34 +9,39 @@ import SwiftUI
 
 struct WriteView: View {
     @Environment(\.dismiss) private var dismiss
-    //@EnvironmentObject var store: Store
     @AppStorage("count") var count = UserDefaults.standard.integer(forKey: "count")
-    @State var opinion: String = ""
+    @State var thoughts: String = ""
     @Binding var writeStart: Bool
+    var summary: String
+    var id: String
+    var title: String
+    var categoryId: String
     var body: some View {
         ZStack{
             Color.bgColor
                 .ignoresSafeArea()
-            VStack{
-                Text(self.dateFormatter())
-                Text("분야")
-                ScrollView{
-                TextEditor(text:self.$opinion)
-                        .disableAutocorrection(true)
-                        .foregroundColor(.customBlack)
-                        .lineSpacing(5)
-                        .frame(height: 500)
-                        .border(Color.white)
-                        .cornerRadius(10)
-                }
-                .padding(.top, 30)
+            VStack(alignment: .leading){
+                HStack{
+                    Text("내 생각 정리")
+                        .font(.system(size:17, weight:.semibold))
+                    
+                    Spacer()
+                }.padding(.bottom, 20)
+                TextEditor(text:self.$thoughts)
+                    .disableAutocorrection(true)
+                    .foregroundColor(.customBlack)
+                    .lineSpacing(5)
+                    .frame(height: 500)
+                    .cornerRadius(10)
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.customBlack.opacity(0.3), lineWidth: 1))
+                Spacer()
             }
             .foregroundColor(.customBlack)
             .padding(.horizontal, 20)
-
+            
         }
         .navigationBarBackButtonHidden(true)
-                .toolbar{
+        .toolbar{
             ToolbarItem(placement:.navigationBarLeading){
                 Button("이전"){
                     dismiss()
@@ -48,25 +53,26 @@ struct WriteView: View {
                     count = count + 1
                 }){
                     Text("완료")
-                }.disabled(opinion == "")
+                }.disabled(thoughts == "")
                 
             }
         }
-                .tint(.customBlack)
-
+        .tint(.customBlack)
+        
+        
     }
     
-    private func dateFormatter() -> String{
+    func dateFormatter() -> String{
         let curDate = Date()
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko")
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy.MM.dd"
         return formatter.string(from: curDate)
     }
 }
 
 struct WriteView_Previews: PreviewProvider {
     static var previews: some View {
-        WriteView(writeStart: .constant(false))
+        WriteView(writeStart: .constant(false), summary: "hey", id:"11111", title:"hewllo", categoryId: "27")
     }
 }

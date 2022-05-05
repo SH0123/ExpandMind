@@ -12,42 +12,49 @@ struct MainView: View {
     @State private var fill:CGFloat = 0.5
     //@EnvironmentObject var store: Store
     @AppStorage("count") var count = UserDefaults.standard.integer(forKey: "count")
-    @AppStorage("howMany") var howMany = UserDefaults.standard.integer(forKey:"howMany") + 1
-
+    @AppStorage("howMany") var howMany = UserDefaults.standard.integer(forKey:"howMany") == 0 ? 1 : UserDefaults.standard.integer(forKey:"howMany")
+    
     var body: some View {
         NavigationView{
             ZStack{
                 Color.bgColor
                     .ignoresSafeArea()
-            VStack{
-                inner
-                    .onTapGesture {
-                        self.writeStart = true
-                    }.disabled(count == howMany)
-
+                VStack{
+                    inner
+                        .onTapGesture {
+                            self.writeStart = true
+                        }.disabled(count == howMany)
+                    
+                    
+                    NavigationLink("", destination: VideoView(writeStart: self.$writeStart), isActive: self.$writeStart
+                    )            }
+            }
+        }
                 
-                NavigationLink("", destination: VideoView(writeStart: self.$writeStart), isActive: self.$writeStart
-                )            }
-        }
-        }
     }
-    
+ 
+
     var inner: some View{
         VStack{
             VStack{
                 if count == howMany{
                     Text("다음주에 만나요")
+                        .font(.title2)
                 }
                 else{
-            Text("화면을 탭해서")
-            Text("생각의 틀을 넓혀보세요")
+                    Group{
+                        Text("화면을 탭해서")
+                            .padding(.bottom, 5)
+                        Text("생각의 틀을 넓혀보세요")
+                    }
+                    .font(.title3)
                 }
             }
             ZStack{
                 Circle()
                     .stroke(Color.customBlack.opacity(0.3),
                             lineWidth: 10)
-                Circle()
+                                    Circle()
                     .trim(from: 0, to: CGFloat(count)/CGFloat(howMany))
                     .stroke(Color.customBlack, lineWidth: 10)
                     .rotationEffect(Angle(degrees: -90))
@@ -56,7 +63,9 @@ struct MainView: View {
                     .foregroundColor(.customBlack)
                     .font(.system(size: 30))
             }
-            .padding(.horizontal, 50)
+            .frame(width: 300, height: 300)
+            .padding(50)
+                    
         }
         .foregroundColor(.customBlack)
     }

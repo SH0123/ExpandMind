@@ -6,59 +6,61 @@
 //
 
 import SwiftUI
+import CoreData
 //slider 범위 문제 해결 못함
 struct SettingView: View {
-    @State private var start: CGFloat = 0.0
-    @State private var end: CGFloat = 3600.0
+    @State var presented: Bool = false
     @State var categoryArr: [Categories] = makeCategoryData()
+    @State var selectedDuration: String? = UserDefaults.standard.string(forKey:"selectedDuration")
 
     var body: some View {
         ZStack{
             Color.bgColor.ignoresSafeArea()
             GeometryReader{proxy in
                 VStack(alignment: .leading){
-                    Text("영상 시간")
-                        .padding(.vertical, 20)
-                    Text("최소 시간")
-                    Slider(
-                        value: $start,
-                        in: 0...3600
-                    ){
-                        Text("duration")
-                    }minimumValueLabel: {
-                        Text("00:00")
-                    }maximumValueLabel: {
-                        Text("60:00")
-                    }
-                    .tint(.customBlack)
-                    .padding(.vertical, 10)
-                    Text("최대 시간")
-                    Slider(
-                        value: $end,
-                        in: 0...3600
-                    ){
-                        Text("duration")
-                    }minimumValueLabel: {
-                        Text("00:00")
-                    }maximumValueLabel: {
-                        Text("60:00")
-                    }
-                    .tint(.customBlack)
-                    .padding(.vertical, 10)
-
                     HStack{
                         Spacer()
-                        Text("\(checkDigit(val : Int(start)/60)):\(checkDigit(val : Int(start)%60))")
-                            .frame(width: 80, height: 40)
-                        Text("~")
-                            .frame(height: 40)
-                        Text("\(checkDigit(val : Int(end)/60)):\(checkDigit(val : Int(end)%60))")
-                            .frame(width: 80, height: 40)
+                        Button(action:{
+                            UserDefaults.standard.set(selectedDuration, forKey: "selectedDuration")
+                            presented = true
+                        }){
+                            Text("저장")
+                                .foregroundColor(.customBlack)
+                        }
+                        .alert("저장되었습니다",isPresented: self.$presented){
+                            Button("확인",role:.cancel,action:{})
+                        }
+                    }
+                    Spacer()
+                    HStack{
+                    Text("영상 시간")
+                        .font(.system(size:17, weight:.semibold))
                         Spacer()
                     }
-                    .padding(.top, 20)
+                        .padding(.vertical, 20)
+                    HStack{
+                        Text("4분 미만")
+                            .boxStyle(selected: selectedDuration=="short", proxy: proxy)
+                            .onTapGesture{
+                                self.selectedDuration = selectedDuration=="short" ? nil : "short"
+                            }
+                        Text("4분 ~ 20분")
+                            .boxStyle(selected: selectedDuration=="medium", proxy: proxy)
+                            .onTapGesture{
+                                self.selectedDuration = selectedDuration=="medium" ? nil : "medium"
+
+                            }
+
+                        Text("20분 이상")
+                            .boxStyle(selected: selectedDuration=="long", proxy: proxy)
+                            .onTapGesture{
+                                self.selectedDuration = selectedDuration=="long" ? nil : "long"
+
+                            }
+                    }
                     Spacer()
                     Text("카테고리")
+                        .font(.system(size:17, weight:.semibold))
                         .padding(.vertical, 20)
                     categoryBox(proxy: proxy, items: categoryArr)
                     Spacer()
@@ -68,16 +70,22 @@ struct SettingView: View {
             }
         }
     }
+    static func makeCategoryData() -> [Categories]{
+        [
+        Categories(division: "education", isSelected: false),
+        Categories(division: "travel", isSelected: false),
+        Categories(division: "technology", isSelected: false),
+        Categories(division: "news", isSelected: false),
+        Categories(division: "nonprofit", isSelected: false)
+        ]
+    }
+    
     private func categoryBox(proxy: GeometryProxy, items: [Categories]) -> some View{
         VStack(spacing: 20){
             HStack{
                 ForEach(0..<3, id:\.self){idx in
                     Text(items[idx].division)
-                        .frame(width: proxy.size.width * 0.3 , height: proxy.size.height * 0.1)
-                        .background(items[idx].isSelected ? Color.customBlack : .white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .foregroundColor(items[idx].isSelected ? .white : .customBlack)
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.customBlack.opacity(0.3), lineWidth: 1))
+                        .boxStyle(selected:items[idx].isSelected, proxy: proxy)
                         .onTapGesture {
                             categoryArr[idx].isSelected.toggle()
                         }
@@ -86,12 +94,7 @@ struct SettingView: View {
             HStack{
                 ForEach(3..<items.count, id:\.self){idx in
                     Text(items[idx].division)
-                        .frame(width: proxy.size.width * 0.3 , height: proxy.size.height * 0.1)
-                        .background(items[idx].isSelected ? Color.customBlack : .white)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .foregroundColor(items[idx].isSelected ? .white : .customBlack)
-                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.customBlack.opacity(0.3), lineWidth: 1))
-
+                        .boxStyle(selected:items[idx].isSelected, proxy: proxy)
                         .onTapGesture {
                             categoryArr[idx].isSelected.toggle()
                         }
@@ -99,20 +102,25 @@ struct SettingView: View {
             }
         }
     }
-    private func checkDigit(val: Int) -> String{
-        return val / 10 > 0 ? String(val) : "0" + String(val)
-    }
-    
-    static func makeCategoryData() -> [Categories]{
-        [
-        Categories(division: "travel", isSelected: false),
-        Categories(division: "education", isSelected: false),
-        Categories(division: "technology", isSelected: false),
-        Categories(division: "howto", isSelected: false),
-        Categories(division: "news", isSelected: false),
-        Categories(division: "nonprofit", isSelected: false),
-        ]
+}
 
+struct boxStyleModifier: ViewModifier{
+    var selected: Bool
+    var proxy: GeometryProxy
+    func body(content: Content) -> some View{
+        content
+            .frame(width: proxy.size.width * 0.3 , height: proxy.size.height * 0.1)
+            .background(selected ? Color.customBlack : .white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .foregroundColor(selected ? .white : .customBlack)
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.customBlack.opacity(0.3), lineWidth: 1))
+
+    }
+}
+
+extension View{
+    func boxStyle(selected: Bool, proxy: GeometryProxy) ->some View{
+        modifier(boxStyleModifier(selected: selected, proxy: proxy))
     }
 }
 

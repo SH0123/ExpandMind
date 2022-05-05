@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CategoryListView: View {
+    @EnvironmentObject var coreDataManager: CoreDataManager
     @Environment(\.dismiss) private var dismiss
     @State private var modalOn: Bool = false
     @State private var selected: Record = Record(id: "1i9kcBHX2Nw", division: "news", date: "2022. 03. 13", title: "스티브잡스 연설", summary: "내용 요약", thoughts: "내 생각 적기", isBookmarked: true)
@@ -19,6 +20,7 @@ struct CategoryListView: View {
             GeometryReader{proxy in
                 VStack(alignment:.leading){
                     Text(category)
+                        .font(.system(size:20, weight:.semibold))
                     ScrollView(showsIndicators: false){
                         ForEach(recordsDummy, id:\.self){record in
                             listRow(data: record, proxy: proxy)
@@ -41,6 +43,7 @@ struct CategoryListView: View {
             }
         }
         .tint(.customBlack)
+
     }
     private func listRow(data: Record, proxy: GeometryProxy) -> some View{
         Button(action:{

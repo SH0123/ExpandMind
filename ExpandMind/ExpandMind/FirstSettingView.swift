@@ -12,7 +12,6 @@ struct FirstSettingView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("howMany") var howMany = UserDefaults.standard.integer(forKey: "howMany")
     @AppStorage("isLaunched") var isLaunched = UserDefaults.standard.bool(forKey: "isLaunched")
-    //@EnvironmentObject var store: Store
     var howManyArr: [Int] = [1, 2, 3, 4, 5, 6, 7]
     var body: some View {
         ZStack{

@@ -20,25 +20,32 @@ struct WriteModal: View {
                 VStack(alignment: HorizontalAlignment.leading){
                     HStack(alignment: .top){
                         Text("제목")
+                            .font(.system(size:17, weight:.semibold))
                         Text(selected.title)
                     }
                 .padding(.vertical, 10)
                 HStack(alignment:.top){
                         Text("날짜")
+                        .font(.system(size:17, weight:.semibold))
                         Text(selected.date)
                     }
                 .padding(.vertical, 10)
-                    Link("영상 보러가기", destination:URL(string: "https://www.youtube.com/watch?v=\(selected.id)")!)
+                    Link(destination:URL(string: "https://www.youtube.com/watch?v=\(selected.id)")!){
+                        Text("영상 보러 가기")
+                            .font(.system(size:17, weight:.semibold))
+                    }
                         .foregroundColor(.blue)
                     .padding(.vertical, 10)
                     VStack(alignment: .leading){
                         Text("요약 정리")
+                            .font(.system(size:17, weight:.semibold))
                             .padding(.vertical, 10)
                         Text(selected.summary)
                     }
                     .padding(.vertical, 10)
                     VStack(alignment: .leading){
                         Text("영상에 대한 내 생각")
+                            .font(.system(size:17, weight:.semibold))
                             .padding(.vertical, 10)
                         Text(selected.thoughts)
                     }
@@ -66,6 +73,7 @@ struct WriteModal: View {
                     Text("닫기")
                 }
                 .tint(.customBlack)
+                
             }
         }
     }

@@ -11,8 +11,8 @@ struct RecordCategoryView: View {
     @State private var goDetail: Bool = false
     @State private var selectedCategory: String = "" // 이게 맞을까?
     let twoColumnGrid: [GridItem] = Array(repeating: .init(.flexible(),spacing:10), count: 2)
-    let categories: [String] = ["bookmark", "travel", "news", "education", "technology", "howto", "nonprofit"]
-    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "howto" : "가이드&패션", "nonprofit" : "비영리", "news" : "뉴스&시사"]
+    let categories: [String] = ["bookmark", "travel","education", "news", "technology", "nonprofit"]
+    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "뉴스&시사"]
     
     var body: some View {
         NavigationView{
@@ -21,6 +21,7 @@ struct RecordCategoryView: View {
                 GeometryReader{ proxy in
                     VStack(alignment:.leading){
                     Text("카테고리")
+                            .font(.system(size:20, weight:.semibold))
                             .padding(.bottom, 10)
                             .foregroundColor(.customBlack)
                     ScrollView(showsIndicators: false){
@@ -49,6 +50,7 @@ struct RecordCategoryView: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(width: proxy.size.width * 0.35, height: proxy.size.height * 0.3)
                     Text(eng2kor[name] ?? "북마크")
+                        .font(.system(size:17, weight:.semibold))
                         .foregroundColor(.customBlack)
                     NavigationLink("", destination: CategoryListView(category: self.selectedCategory), isActive: self.$goDetail)
                 }

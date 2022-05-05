@@ -8,33 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    var network = Network()
     @AppStorage("isLaunched") var isLaunched = !UserDefaults.standard.bool(forKey: "isLaunched")
-    @StateObject var store = Store()
+    
     var body: some View {
-//        if isLaunched{
-//            FirstSettingView(isLaunched: self.$isLaunched)
-//        }
-//        else{
-//        TabView{
-//            MainView()
-//                .tabItem{
-//                    Image(systemName: "house")
-//                }
-//            RecordCategoryView()
-//                .tabItem{
-//                    Image(systemName: "books.vertical")
-//                }
-//            SettingView()
-//                .tabItem{
-//                    Image(systemName: "gearshape")
-//                }
-//        }
-//        }
         TabView{
             MainView()
                 .tabItem{
                     Image(systemName: "house")
-                }
+                }                .environmentObject(network)
             RecordCategoryView()
                 .tabItem{
                     Image(systemName: "books.vertical")
@@ -43,11 +25,8 @@ struct ContentView: View {
                 .tabItem{
                     Image(systemName: "gearshape")
                 }
-            FirstSettingView()
-                .tabItem{
-                    Image(systemName: "gearshape")
-                }
-        }        .fullScreenCover(isPresented: self.$isLaunched){
+
+            }        .fullScreenCover(isPresented: self.$isLaunched){
             FirstSettingView()
 
         }    }

@@ -17,7 +17,7 @@ struct Record : Hashable{
     var isBookmarked: Bool
 }
 
-struct Categories{
+struct Categories : Hashable{
     let division: String
     var isSelected: Bool
 }
