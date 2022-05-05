@@ -9,6 +9,7 @@ import Foundation
 
 class Network: ObservableObject{
     @Published var videos: [Item] = []
+    @Published var videoCategory: String = ""
 
     private func name2num(division: String)->Int{
         switch division{
@@ -70,7 +71,6 @@ class Network: ObservableObject{
                     do{
                         let decodedVideos = try JSONDecoder().decode(VideoModel.self, from: data)
                         self.videos += decodedVideos.items
-                        print(decodedVideos)
                         completionHandler()
                     }catch let error{
                         print("Error Decoding", error)
@@ -81,6 +81,48 @@ class Network: ObservableObject{
         
         dataTask.resume()
         }
+        
+            }
+    
+    func getVideoCategory(
+        videoId: String,
+        completionHandler: @escaping () -> Void
+    ){
+        
+        var components = URLComponents(string: "https://www.googleapis.com/youtube/v3/videos")
+        let privateKey = URLQueryItem(name:"key", value:"AIzaSyCcyPBM6KPJCXsJ1U56ZYccNk5swOhaJ14")
+        let part = URLQueryItem(name:"part", value: "snippet")
+        let id = URLQueryItem(name: "id", value: videoId)
+        
+            
+        components?.queryItems = [privateKey, part, id]
+        
+                        
+        guard let url = components?.url else{fatalError("MISSING URL")}
+        let urlRequest = URLRequest(url: url)
+        let dataTask = URLSession.shared.dataTask(with: urlRequest){(data, response, error) in
+            if let error = error{
+                print("Request Error", error)
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse else{return}
+            if response.statusCode == 200{
+                guard let data = data else{return}
+                DispatchQueue.main.async{
+                    do{
+                        let videoCategoryObject = try JSONDecoder().decode(VideoCategoryModel.self, from: data)
+                        self.videoCategory = videoCategoryObject.items[0].snippet.categoryId
+                        completionHandler()
+                    }catch let error{
+                        print("Error Decoding", error)
+                    }
+                }
+            }
+        }
+        
+        dataTask.resume()
+        
         
             }
     }

@@ -11,10 +11,11 @@ struct VideoView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var network: Network
     @State private var summary: String = ""
-    @State private var videoID: String = "oWL3kOxpXcw"
-    @State private var shouldAnimate: Bool = true
+    @State private var videoId: String = "oWL3kOxpXcw"
+    @State private var isLoading: Bool = true
     @State var watchedVideoId = UserDefaults.standard.array(forKey:"watchedVideoId") ?? []
     @State var selectedDuration = UserDefaults.standard.string(forKey:"selectedDuration")
+    @State var nowVideo: Item?
     var categories: [Categories] = [
         Categories(division: "travel", isSelected: false),
         Categories(division: "education", isSelected: true),
@@ -23,34 +24,41 @@ struct VideoView: View {
         Categories(division: "nonprofit", isSelected: true)
     ]
     @Binding var writeStart: Bool
-    var categoryId: String?
-    var randInt: Int = Int.random(in: 0..<30)
-    
+    @State var categoryId: String?
+
     var body: some View {
         ZStack{
             Color.bgColor
                 .ignoresSafeArea()
+            
+            if isLoading{
+                ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .customBlack))
+                .padding()
+            }
+            else{
             GeometryReader{ g in
                 VStack(alignment: .leading){
                     ZStack{
-                    YoutubeView(videoID: self.$videoID)
+                    YoutubeView(videoID: self.$videoId)
                         .frame(height: g.size.height*0.3)
                     }
                         .clipShape(RoundedRectangle(cornerRadius: 10))
-                    Text("각자도생의 시대, '인구'를 알아야 내일이 있다")
+                    Text(nowVideo?.snippet.title ?? "")
                         .font(.system(size:17, weight:.semibold))
                         .padding(.vertical, 10)
                     HStack{
-                        Text("2022. 3. 14")
+                        Text(dateFormatter(inputDate: nowVideo?.snippet.publishTime ?? "2020-01-03"))
 
                         Spacer()
                         Button(action: {
                             while(true){
-                                let id = network.videos[Int.random(in:0..<100)].id.videoId
+                                nowVideo = network.videos[Int.random(in:0..<100)]
+                                let id = nowVideo?.id.videoId
                                 if let watchedList = self.watchedVideoId as? [String]{
-                                    if !watchedList.contains(id){
-                                        watchedVideoId.append(id)
-                                        videoID = id
+                                    if !watchedList.contains(id!){
+                                        watchedVideoId.append(id!)
+                                        self.videoId = id!
                                         break
                                     }
                                 }                            }
@@ -76,41 +84,56 @@ struct VideoView: View {
                 .padding(.horizontal, 20)
 
             }
-            .navigationBarBackButtonHidden(true)
-            .toolbar{
-                ToolbarItem(placement:.navigationBarLeading){
-                    Button("이전"){
-                        dismiss()
-                    }
-                }
-                
-                ToolbarItem(placement: .navigationBarTrailing){
-                    NavigationLink(destination: WriteView(writeStart: self.$writeStart, summary: self.summary, id: self.videoID, title: "title" , categoryId: "23324" )){
-                        Text("다음")
-                    }
-                    .disabled(summary == "")
-                    
-                    
+            
+            
+            .tint(.customBlack)
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar{
+            ToolbarItem(placement:.navigationBarLeading){
+                Button("이전"){
+                    dismiss()
                 }
             }
-            .tint(.customBlack)
-                        
-        }.onAppear{
             
-            //network.getVideos(division: ["travel", "nonprofit"], timeDuration: selectedDuration ?? "any"){
-                //print("---------------")
-                //print(network.videos[randInt].id.videoId)
-               // print(randInt)
-            //}
+            ToolbarItem(placement: .navigationBarTrailing){
+                NavigationLink(destination: WriteView(writeStart: self.$writeStart, summary: self.summary, id: self.videoId, title: nowVideo?.snippet.title ?? "", categoryId: self.categoryId ?? "" )){
+                    Text("다음")
+                }
+                .disabled(summary == "")
+                
+                
+            }
+        }
+        .onAppear{
+            
+//            network.getVideos(division: ["travel","nonprofit"], timeDuration: selectedDuration ?? "any"){
+//                print(network.videos.count)
+//                nowVideo = network.videos[Int.random(in: 0..<50)]
+//                print("------")
+//                self.videoId = nowVideo?.id.videoId ?? "oWL3kOxpXcw"
+//                network.getVideoCategory(videoId: self.videoId){
+//                    print("-----")
+//                    self.categoryId = network.videoCategory
+//                    self.isLoading = false
+//
+//                            }
+//
+//            }
                 }
         
-        
-        //동기적으로 처리하고 싶다.
-        //videos 받아와서 radom값으로 비디오 고르고, 이미 봤던 비디오인지 확인
-        //본 적 없는 비디오라면 영상 재생
-        //데이터 받아오기까지 activity view, 데이터 받아온 뒤에는 loading 화면 사라짐
-        
     }
+    func dateFormatter(inputDate: String) -> String{
+        let formatter = DateFormatter()
+        let convertFormat = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let convertDate = formatter.date(from: inputDate)
+        convertFormat.locale = Locale(identifier: "ko")
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter.string(from: convertDate!)
+    }
+
     
 }
 

@@ -10,6 +10,7 @@ import CoreData
 //slider 범위 문제 해결 못함
 struct SettingView: View {
     @State var presented: Bool = false
+    @EnvironmentObject var network: Network
     @State var categoryArr: [Categories] = makeCategoryData()
     @State var selectedDuration: String? = UserDefaults.standard.string(forKey:"selectedDuration")
 
@@ -22,6 +23,7 @@ struct SettingView: View {
                         Spacer()
                         Button(action:{
                             UserDefaults.standard.set(selectedDuration, forKey: "selectedDuration")
+                            network.videos = []
                             presented = true
                         }){
                             Text("저장")

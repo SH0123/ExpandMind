@@ -23,7 +23,7 @@
 		E6A60369281E9662002C8D74 /* WriteModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60368281E9662002C8D74 /* WriteModal.swift */; };
 		E6A6036B281FF0F8002C8D74 /* FirstSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */; };
 		E6A6036D28200AD9002C8D74 /* observableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6036C28200AD9002C8D74 /* observableClass.swift */; };
-		E6A60371282146FA002C8D74 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60370282146FA002C8D74 /* VideoModel.swift */; };
+		E6A60371282146FA002C8D74 /* CodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A60370282146FA002C8D74 /* CodableModel.swift */; };
 		E6A6037328214828002C8D74 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037228214828002C8D74 /* Network.swift */; };
 		E6A6037528221625002C8D74 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037428221625002C8D74 /* ActivityIndicator.swift */; };
 		E6A6037828229F37002C8D74 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037628229F37002C8D74 /* Model.xcdatamodeld */; };
@@ -52,7 +52,7 @@
 		E6A60368281E9662002C8D74 /* WriteModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteModal.swift; sourceTree = "<group>"; };
 		E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSettingView.swift; sourceTree = "<group>"; };
 		E6A6036C28200AD9002C8D74 /* observableClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = observableClass.swift; sourceTree = "<group>"; };
-		E6A60370282146FA002C8D74 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		E6A60370282146FA002C8D74 /* CodableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableModel.swift; sourceTree = "<group>"; };
 		E6A6037228214828002C8D74 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E6A6037428221625002C8D74 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E6A6037728229F37002C8D74 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 				E6A6036F2821372A002C8D74 /* Second Group */,
 				E6A60364281E5F6D002C8D74 /* Models.swift */,
 				E63B3BBD281A3827004DCCBD /* SettingView.swift */,
-				E6A60370282146FA002C8D74 /* VideoModel.swift */,
+				E6A60370282146FA002C8D74 /* CodableModel.swift */,
 				E6A6037228214828002C8D74 /* Network.swift */,
 				E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */,
 				E63B3BC1281A42D5004DCCBD /* ColorExtention.swift */,
@@ -235,7 +235,7 @@
 				E63B3BBC281A3815004DCCBD /* RecordCategoryView.swift in Sources */,
 				E6A603902822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift in Sources */,
 				E63B3BC2281A42D6004DCCBD /* ColorExtention.swift in Sources */,
-				E6A60371282146FA002C8D74 /* VideoModel.swift in Sources */,
+				E6A60371282146FA002C8D74 /* CodableModel.swift in Sources */,
 				E6A60365281E5F6D002C8D74 /* Models.swift in Sources */,
 				E6A6038F2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift in Sources */,
 				E6A6037528221625002C8D74 /* ActivityIndicator.swift in Sources */,

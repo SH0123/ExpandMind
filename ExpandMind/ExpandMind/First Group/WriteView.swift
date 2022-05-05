@@ -49,6 +49,10 @@ struct WriteView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing){
                 Button(action:{
+                    print(self.summary)
+                    print(self.id)
+                    print(self.title)
+                    print(self.categoryId)
                     self.writeStart = false
                     count = count + 1
                 }){

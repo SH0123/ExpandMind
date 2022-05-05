@@ -11,8 +11,8 @@ struct RecordCategoryView: View {
     @State private var goDetail: Bool = false
     @State private var selectedCategory: String = "" // 이게 맞을까?
     let twoColumnGrid: [GridItem] = Array(repeating: .init(.flexible(),spacing:10), count: 2)
-    let categories: [String] = ["bookmark", "travel","education", "news", "technology", "nonprofit"]
-    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "뉴스&시사"]
+    let categories: [String] = ["bookmark", "travel","education", "news", "technology", "nonprofit", "extra"]
+    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "뉴스&시사", "extra" : "기타"]
     
     var body: some View {
         NavigationView{

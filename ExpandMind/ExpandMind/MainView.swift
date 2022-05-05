@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     @State private var writeStart = false
     @State private var fill:CGFloat = 0.5
-    //@EnvironmentObject var store: Store
     @AppStorage("count") var count = UserDefaults.standard.integer(forKey: "count")
     @AppStorage("howMany") var howMany = UserDefaults.standard.integer(forKey:"howMany") == 0 ? 1 : UserDefaults.standard.integer(forKey:"howMany")
     
