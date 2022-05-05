@@ -9,11 +9,12 @@ import SwiftUI
 import CoreData
 //slider 범위 문제 해결 못함
 struct SettingView: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @State var presented: Bool = false
     @EnvironmentObject var network: Network
     @State var categoryArr: [Categories] = makeCategoryData()
     @State var selectedDuration: String? = UserDefaults.standard.string(forKey:"selectedDuration")
-
+    
     var body: some View {
         ZStack{
             Color.bgColor.ignoresSafeArea()
@@ -71,7 +72,7 @@ struct SettingView: View {
                 .position(x: proxy.size.width / 2, y: proxy.size.height / 2)
             }
         }
-    }
+            }
     static func makeCategoryData() -> [Categories]{
         [
         Categories(division: "education", isSelected: false),
@@ -82,7 +83,8 @@ struct SettingView: View {
         ]
     }
     
-    private func categoryBox(proxy: GeometryProxy, items: [Categories]) -> some View{
+    private func categoryBox(proxy: GeometryProxy, items: [Categories]
+) -> some View{
         VStack(spacing: 20){
             HStack{
                 ForEach(0..<3, id:\.self){idx in

@@ -27,11 +27,8 @@
 		E6A6037328214828002C8D74 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037228214828002C8D74 /* Network.swift */; };
 		E6A6037528221625002C8D74 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037428221625002C8D74 /* ActivityIndicator.swift */; };
 		E6A6037828229F37002C8D74 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6A6037628229F37002C8D74 /* Model.xcdatamodeld */; };
-		E6A6038D2822AD4C002C8D74 /* CategoryCheck+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A603892822AD4C002C8D74 /* CategoryCheck+CoreDataClass.swift */; };
-		E6A6038E2822AD4C002C8D74 /* CategoryCheck+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6038A2822AD4C002C8D74 /* CategoryCheck+CoreDataProperties.swift */; };
-		E6A6038F2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6038B2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift */; };
-		E6A603902822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A6038C2822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift */; };
 		E6A603922822ADF3002C8D74 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A603912822ADF3002C8D74 /* CoreDataManager.swift */; };
+		E6A603962823C062002C8D74 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A603952823C062002C8D74 /* CoreDataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,11 +53,8 @@
 		E6A6037228214828002C8D74 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E6A6037428221625002C8D74 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		E6A6037728229F37002C8D74 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		E6A603892822AD4C002C8D74 /* CategoryCheck+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCheck+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E6A6038A2822AD4C002C8D74 /* CategoryCheck+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryCheck+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E6A6038B2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoWriting+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E6A6038C2822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoWriting+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E6A603912822ADF3002C8D74 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E6A603952823C062002C8D74 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,10 +71,6 @@
 		E63B3B9D281A3657004DCCBD = {
 			isa = PBXGroup;
 			children = (
-				E6A603892822AD4C002C8D74 /* CategoryCheck+CoreDataClass.swift */,
-				E6A6038A2822AD4C002C8D74 /* CategoryCheck+CoreDataProperties.swift */,
-				E6A6038B2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift */,
-				E6A6038C2822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift */,
 				E63B3BA8281A3657004DCCBD /* ExpandMind */,
 				E63B3BA7281A3657004DCCBD /* Products */,
 			);
@@ -110,6 +100,7 @@
 				E6A6036A281FF0F8002C8D74 /* FirstSettingView.swift */,
 				E63B3BC1281A42D5004DCCBD /* ColorExtention.swift */,
 				E6A603912822ADF3002C8D74 /* CoreDataManager.swift */,
+				E6A603952823C062002C8D74 /* CoreDataViewModel.swift */,
 				E6A6037628229F37002C8D74 /* Model.xcdatamodeld */,
 				E63B3BAD281A3658004DCCBD /* Assets.xcassets */,
 				E63B3BAF281A3658004DCCBD /* Preview Content */,
@@ -216,11 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6A6038D2822AD4C002C8D74 /* CategoryCheck+CoreDataClass.swift in Sources */,
+				E6A603962823C062002C8D74 /* CoreDataViewModel.swift in Sources */,
 				E63B3BC0281A3E68004DCCBD /* VideoView.swift in Sources */,
 				E6A6036D28200AD9002C8D74 /* observableClass.swift in Sources */,
 				E6A6037328214828002C8D74 /* Network.swift in Sources */,
-				E6A6038E2822AD4C002C8D74 /* CategoryCheck+CoreDataProperties.swift in Sources */,
 				E63B3BAC281A3657004DCCBD /* ContentView.swift in Sources */,
 				E6A60367281E8104002C8D74 /* CategoryListView.swift in Sources */,
 				E6A6037828229F37002C8D74 /* Model.xcdatamodeld in Sources */,
@@ -233,11 +223,9 @@
 				E63B3BC4281A705A004DCCBD /* YoutubeView.swift in Sources */,
 				E63B3BAA281A3657004DCCBD /* ExpandMindApp.swift in Sources */,
 				E63B3BBC281A3815004DCCBD /* RecordCategoryView.swift in Sources */,
-				E6A603902822AD4C002C8D74 /* VideoWriting+CoreDataProperties.swift in Sources */,
 				E63B3BC2281A42D6004DCCBD /* ColorExtention.swift in Sources */,
 				E6A60371282146FA002C8D74 /* CodableModel.swift in Sources */,
 				E6A60365281E5F6D002C8D74 /* Models.swift in Sources */,
-				E6A6038F2822AD4C002C8D74 /* VideoWriting+CoreDataClass.swift in Sources */,
 				E6A6037528221625002C8D74 /* ActivityIndicator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

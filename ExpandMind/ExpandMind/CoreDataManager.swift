@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 class CoreDataManager : ObservableObject{
-    static let shared = CoreDataManager()
+    static let instance = CoreDataManager()
     
     let container: NSPersistentContainer
     
@@ -20,7 +20,6 @@ class CoreDataManager : ObservableObject{
                 fatalError("Unresolved Error: \(error)")
             }
         }
-        
     }
-    
+        
     }

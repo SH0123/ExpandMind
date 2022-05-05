@@ -9,10 +9,13 @@ import SwiftUI
 
 struct RecordCategoryView: View {
     @State private var goDetail: Bool = false
-    @State private var selectedCategory: String = "" // 이게 맞을까?
+    @State private var selectedCategory: [VideoWriting] = [] // 이게 맞을까?
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var writings: FetchedResults<VideoWriting>
     let twoColumnGrid: [GridItem] = Array(repeating: .init(.flexible(),spacing:10), count: 2)
     let categories: [String] = ["bookmark", "travel","education", "news", "technology", "nonprofit", "extra"]
-    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "뉴스&시사", "extra" : "기타"]
+    let eng2num: [String: String] = ["bookmark" : "북마크", "travel" : "19", "education" :"27", "technology" : "28", "nonprofit" : "29", "news" : "25", "extra" : "기타"]
+    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "정치&뉴스", "extra" : "기타"]
+    @State private var category: String = ""
     
     var body: some View {
         NavigationView{
@@ -41,7 +44,22 @@ struct RecordCategoryView: View {
         private func card(name: String, proxy: GeometryProxy) -> some View{
             Button(action:{
                 self.goDetail.toggle()
-                self.selectedCategory = eng2kor[name]!
+                if name == "bookmark"{
+                    self.selectedCategory = writings.filter{writing in
+                        writing.isBookmarked == true
+                }
+                }
+                else if name == "extra"{
+                    self.selectedCategory = writings.filter{writing in
+                        !["19", "25", "27", "28", "29"].contains(writing.division)
+                }
+                }
+                else {
+                    self.selectedCategory = writings.filter{writing in
+                        writing.division == eng2num[name]!
+                }
+                }
+                self.category = name
                 
             }){
                 VStack{
@@ -52,7 +70,7 @@ struct RecordCategoryView: View {
                     Text(eng2kor[name] ?? "북마크")
                         .font(.system(size:17, weight:.semibold))
                         .foregroundColor(.customBlack)
-                    NavigationLink("", destination: CategoryListView(category: self.selectedCategory), isActive: self.$goDetail)
+                    NavigationLink("", destination: CategoryListView(lists:selectedCategory, category: self.category ), isActive: self.$goDetail)
                 }
             }
             .frame(width: proxy.size.width * 0.4, height: proxy.size.height * 0.35)

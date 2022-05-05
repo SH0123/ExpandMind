@@ -108,19 +108,16 @@ struct VideoView: View {
         }
         .onAppear{
             
-//            network.getVideos(division: ["travel","nonprofit"], timeDuration: selectedDuration ?? "any"){
-//                print(network.videos.count)
-//                nowVideo = network.videos[Int.random(in: 0..<50)]
-//                print("------")
-//                self.videoId = nowVideo?.id.videoId ?? "oWL3kOxpXcw"
-//                network.getVideoCategory(videoId: self.videoId){
-//                    print("-----")
-//                    self.categoryId = network.videoCategory
-//                    self.isLoading = false
-//
-//                            }
-//
-//            }
+            network.getVideos(division: ["travel","news", "nonprofit"], timeDuration: selectedDuration ?? "any"){
+                print(network.videos.count)
+                nowVideo = network.videos[Int.random(in: 0..<50)]
+                self.videoId = nowVideo?.id.videoId ?? "oWL3kOxpXcw"
+                network.getVideoCategory(videoId: self.videoId){
+                    self.categoryId = network.videoCategory
+                    self.isLoading = false
+                            }
+
+            }
                 }
         
     }

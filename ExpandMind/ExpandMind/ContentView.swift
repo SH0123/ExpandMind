@@ -16,7 +16,8 @@ struct ContentView: View {
             MainView()
                 .tabItem{
                     Image(systemName: "house")
-                }                .environmentObject(network)
+                }
+                .environmentObject(network)
             RecordCategoryView()
                 .tabItem{
                     Image(systemName: "books.vertical")
@@ -25,11 +26,15 @@ struct ContentView: View {
                 .tabItem{
                     Image(systemName: "gearshape")
                 }
-
-            }        .fullScreenCover(isPresented: self.$isLaunched){
-            FirstSettingView()
-
-        }    }
+                .environmentObject(network)
+            }
+        .accentColor(Color.customBlack)
+        .fullScreenCover(isPresented: self.$isLaunched){
+                FirstSettingView()
+                
+            }
+    }
+        
 }
 
 

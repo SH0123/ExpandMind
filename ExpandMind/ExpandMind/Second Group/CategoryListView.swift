@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct CategoryListView: View {
-    @EnvironmentObject var coreDataManager: CoreDataManager
     @Environment(\.dismiss) private var dismiss
     @State private var modalOn: Bool = false
-    @State private var selected: Record = Record(id: "1i9kcBHX2Nw", division: "news", date: "2022. 03. 13", title: "스티브잡스 연설", summary: "내용 요약", thoughts: "내 생각 적기", isBookmarked: true)
+    @State private var selected: VideoWriting?
+    var lists: [VideoWriting] = []
     var category: String
     var recordsDummy: [Record] = makeMockData()
+    let eng2kor: [String: String] = ["bookmark" : "북마크", "travel" : "여행", "education" :"교육", "technology" : "과학&기술", "nonprofit" : "비영리", "news" : "정치&뉴스", "extra" : "기타"]
     var body: some View {
         ZStack{
             Color.bgColor.ignoresSafeArea()
             GeometryReader{proxy in
                 VStack(alignment:.leading){
-                    Text(category)
+                    Text(eng2kor[category]!)
                         .font(.system(size:20, weight:.semibold))
                     ScrollView(showsIndicators: false){
-                        ForEach(recordsDummy, id:\.self){record in
-                            listRow(data: record, proxy: proxy)
+                        ForEach(lists, id:\.self){list in
+                            listRow(data: list, proxy: proxy)
                         }
                     }
                     
@@ -45,15 +46,16 @@ struct CategoryListView: View {
         .tint(.customBlack)
 
     }
-    private func listRow(data: Record, proxy: GeometryProxy) -> some View{
+    private func listRow(data: VideoWriting, proxy: GeometryProxy) -> some View{
         Button(action:{
             self.selected = data
             self.modalOn = true
+            print(self.selected)
         }){
             HStack{
                 Image(systemName: data.isBookmarked ? "bookmark.fill" : "bookmark")
                     .padding(.horizontal, 10)
-                Text(data.title)
+                Text(data.title ?? "제목없음")
                     .multilineTextAlignment(.leading)
                 Spacer()
             }

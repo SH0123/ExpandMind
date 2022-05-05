@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WriteView: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @Environment(\.dismiss) private var dismiss
     @AppStorage("count") var count = UserDefaults.standard.integer(forKey: "count")
     @State var thoughts: String = ""
@@ -49,10 +50,7 @@ struct WriteView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing){
                 Button(action:{
-                    print(self.summary)
-                    print(self.id)
-                    print(self.title)
-                    print(self.categoryId)
+                    CoreDataViewModel().addWritings(date: dateFormatter(), division: categoryId, id: id, isBookmarked: false, summary: summary, thoughts: thoughts, title: title, context: managedObjContext)
                     self.writeStart = false
                     count = count + 1
                 }){

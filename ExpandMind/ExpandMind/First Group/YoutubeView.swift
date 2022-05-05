@@ -12,7 +12,9 @@ struct YoutubeView: UIViewRepresentable {
     @Binding var videoID: String
     
     func makeUIView(context: Context) -> WKWebView{
-        return WKWebView()
+        let configuration = WKWebViewConfiguration()
+        configuration.allowsInlineMediaPlayback = true
+        return WKWebView(frame: .zero, configuration: configuration)
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context){

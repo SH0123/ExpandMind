@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="CategoryCheck" representedClassName=".CategoryCheck" isAbstract="YES" syncable="YES">
+    <entity name="CategoryCheck" representedClassName=".CategoryCheck" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="division" optional="YES" attributeType="String"/>
-        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
-    <entity name="VideoWriting" representedClassName=".VideoWriting" isAbstract="YES" syncable="YES">
+    <entity name="VideoWriting" representedClassName=".VideoWriting" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="division" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
@@ -14,7 +13,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="CategoryCheck" positionX="-63" positionY="-18" width="128" height="59"/>
+        <element name="CategoryCheck" positionX="-63" positionY="-18" width="128" height="44"/>
         <element name="VideoWriting" positionX="131.1015625" positionY="-20.0546875" width="128" height="134"/>
     </elements>
 </model>

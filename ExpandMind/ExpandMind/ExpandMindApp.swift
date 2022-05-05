@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct ExpandMindApp: App {
-        var body: some Scene {
+    @StateObject private var coreDataManager = CoreDataManager()
+    var body: some Scene {
         WindowGroup {
             ContentView()
-                
-        }
+                .environment(\.managedObjectContext, coreDataManager.container.viewContext)
+                        }
     }
 }
