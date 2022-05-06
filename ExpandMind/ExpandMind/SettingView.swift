@@ -7,13 +7,13 @@
 
 import SwiftUI
 import CoreData
-//slider 범위 문제 해결 못함
 struct SettingView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @State var presented: Bool = false
     @EnvironmentObject var network: Network
     @State var categoryArr: [Categories] = makeCategoryData()
     @State var selectedDuration: String? = UserDefaults.standard.string(forKey:"selectedDuration")
+    @State var selectedCategories = UserDefaults.standard.array(forKey:"selectedCategories") as? [String] ?? [String]()
     
     var body: some View {
         ZStack{
@@ -31,8 +31,7 @@ struct SettingView: View {
                                 .foregroundColor(.customBlack)
                         }
                         .alert("저장되었습니다",isPresented: self.$presented){
-                            Button("확인",role:.cancel,action:{})
-                        }
+                            Button("확인",role:.cancel,action:{})                        }
                     }
                     Spacer()
                     HStack{
@@ -105,6 +104,15 @@ struct SettingView: View {
                 }
             }
         }
+    }
+    
+    func findIdx(category: String, arr: [String]) -> Int {
+        for idx in 0..<arr.count{
+            if arr[idx] == category{
+                    return idx
+            }
+        }
+        return -1
     }
 }
 

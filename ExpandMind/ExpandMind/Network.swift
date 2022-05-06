@@ -32,7 +32,8 @@ class Network: ObservableObject{
     ){
         for category in division{
         var components = URLComponents(string: "https://www.googleapis.com/youtube/v3/search")
-        let privateKey = URLQueryItem(name:"key", value:"AIzaSyCcyPBM6KPJCXsJ1U56ZYccNk5swOhaJ14")
+        let privateKey = URLQueryItem(name:"key", value:"AIzaSyCZ1zyLSums8nvOfmN3TmpMfrTlpbbuXM4")
+            //예비 key: AIzaSyCZ1zyLSums8nvOfmN3TmpMfrTlpbbuXM4   AIzaSyCcyPBM6KPJCXsJ1U56ZYccNk5swOhaJ14
         let part = URLQueryItem(name:"part", value: "snippet")
         let type = URLQueryItem(name:"type", value: "video")
         let regionCode = URLQueryItem(name:"regionCode", value: "KR")

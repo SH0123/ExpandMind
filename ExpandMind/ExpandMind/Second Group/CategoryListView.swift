@@ -50,7 +50,6 @@ struct CategoryListView: View {
         Button(action:{
             self.selected = data
             self.modalOn = true
-            print(self.selected)
         }){
             HStack{
                 Image(systemName: data.isBookmarked ? "bookmark.fill" : "bookmark")

@@ -108,9 +108,9 @@ struct VideoView: View {
         }
         .onAppear{
             
-            network.getVideos(division: ["travel","news", "nonprofit"], timeDuration: selectedDuration ?? "any"){
+            network.getVideos(division: ["travel","news", "nonprofit","technology"], timeDuration: selectedDuration ?? "long"){
                 print(network.videos.count)
-                nowVideo = network.videos[Int.random(in: 0..<50)]
+                nowVideo = network.videos[Int.random(in: 0..<network.videos.count)]
                 self.videoId = nowVideo?.id.videoId ?? "oWL3kOxpXcw"
                 network.getVideoCategory(videoId: self.videoId){
                     self.categoryId = network.videoCategory
