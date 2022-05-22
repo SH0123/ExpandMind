@@ -11,6 +11,11 @@ Expanding your thoughts by watching random videos and organizing your thoughts
 3. 셔플 버튼을 눌러 보고싶은 영상을 찾아 내용을 간략히 요약하고 생각을 정리합니다.
 4. 다시 보고 싶은 영상과 글은 글 보관함에서 카테고리별로 분류된 글을 찾아 영상을 다시 확인합니다.
 
+![ezgif com-gif-maker-2](https://user-images.githubusercontent.com/26588989/169695872-9b35b641-5e1f-4b1d-88a0-ea43def6a82b.gif)
+![ezgif com-gif-maker-3](https://user-images.githubusercontent.com/26588989/169695880-2ad238d5-fee8-4fe4-9a25-87f714340931.gif)
+![ezgif com-gif-maker-4](https://user-images.githubusercontent.com/26588989/169695888-9f3f53eb-7151-4e1e-b767-e9fc9be912d3.gif)
+
+
 
 
 
