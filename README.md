@@ -1,6 +1,5 @@
 <img width="200" alt="스크린샷 2022-05-05 오후 10 24 57" src="https://user-images.githubusercontent.com/26588989/169693947-b9ed02b8-5cb1-4a88-ac8c-be2859bd831f.png"> 
 
-<h1 align="center"> Expand Mind (생각을 확장하다) </h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
@@ -8,7 +7,7 @@
 > Apple Developer Academy @ POSTECH Nano Challenge 1
 
 
-## 앱 소개
+## Expand Mind (생각을 확장하다)
 Expanding your thoughts by watching random videos and organizing your thoughts
 
 
