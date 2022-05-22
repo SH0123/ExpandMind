@@ -19,8 +19,7 @@ Expanding your thoughts by watching random videos and organizing your thoughts
 
 
 ## Screenshots
-<img width="200" src="https://user-images.githubusercontent.com/26588989/169695571-0a732465-71a3-418e-91c4-c3e835054a65.png">
-<img width="200" src="https://user-images.githubusercontent.com/26588989/169695575-a7ddc46e-260c-4b97-86f2-0e15f49dcd1a.png">
+<img width="200" src="https://user-images.githubusercontent.com/26588989/169695571-0a732465-71a3-418e-91c4-c3e835054a65.png"><img width="200" src="https://user-images.githubusercontent.com/26588989/169695575-a7ddc46e-260c-4b97-86f2-0e15f49dcd1a.png">
 <img width="200" src="https://user-images.githubusercontent.com/26588989/169695580-9d631b07-7252-4523-bd07-d9f0f20e030d.png">
 <img width="200" src="https://user-images.githubusercontent.com/26588989/169695585-770f532c-e2de-4ef1-b544-70c76b7146ed.png">
 <img width="200" src="https://user-images.githubusercontent.com/26588989/169695589-a4efc843-a033-40af-98e2-f1a2382423df.png">
