@@ -1,4 +1,5 @@
-<img width="200" alt="스크린샷 2022-05-05 오후 10 24 57" src="https://user-images.githubusercontent.com/26588989/169693947-b9ed02b8-5cb1-4a88-ac8c-be2859bd831f.png"> 
+<img width="200" alt="스크린샷 2022-05-05 오후 10 24 57" src="https://user-images.githubusercontent.com/26588989/169943545-c4380f94-c15a-438f-9bf2-3a130d78c6fc.png">
+
 
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
