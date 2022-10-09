@@ -5,7 +5,7 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
 </p>
 
-> Apple Developer Academy @ POSTECH Nano Challenge 1
+> Apple Developer Academy @ POSTECH Nano Challenge 1, My first project
 
 
 ## Expand Mind (생각을 확장하다)
